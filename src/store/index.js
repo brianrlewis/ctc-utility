@@ -1,5 +1,5 @@
-import { store } from "quasar/wrappers";
-import { createStore } from "vuex";
+import { store } from 'quasar/wrappers';
+import { createStore } from 'vuex';
 
 // import example from './module-example'
 
