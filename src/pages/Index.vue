@@ -1,5 +1,5 @@
 <template>
-  <q-page class="" :class="$style.page" style="height: 100%">
+  <q-page>
     <transaction-table-parser />
   </q-page>
 </template>
@@ -13,10 +13,3 @@ export default defineComponent({
   components: { TransactionTableParser },
 });
 </script>
-
-<style lang="scss" module>
-.page {
-  //height: 100%;
-  // border: 1px solid red;
-}
-</style>
