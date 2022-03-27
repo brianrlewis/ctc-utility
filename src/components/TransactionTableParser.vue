@@ -5,7 +5,16 @@
       <q-input v-model.trim="text" type="textarea" outlined />
     </div>
     <div :class="$style.output">
-      <h5 class="q-ma-none">Transaction Amounts ({{ transactions.length }})</h5>
+      <div class="flex justify-between q-pb-xs">
+        <h5 class="q-ma-none">
+          Transaction Amounts ({{ transactions.length }})
+        </h5>
+        <div>
+          <q-btn color="grey-2" text-color="black" @click="reverse">
+            Reverse
+          </q-btn>
+        </div>
+      </div>
       <q-input v-model="transactionAmounts" type="textarea" outlined />
     </div>
   </div>
@@ -36,11 +45,15 @@ export default defineComponent({
       transactions.value = parseTransactions(val);
     });
 
+    const reverse = () => {
+      transactions.value = transactions.value.slice(0).reverse();
+    };
+
     if (process.env.DEV) {
       text.value = getTestInput();
     }
 
-    return { text, transactions, transactionAmounts };
+    return { text, transactions, transactionAmounts, reverse };
   },
 });
 </script>
