@@ -1,7 +1,7 @@
 {
   "name": "ctc-utility",
   "version": "0.0.1",
-  "description": "Utilities for CryptoTaxCalculator",
+  "description": "CryptoTaxCalculator Transaction Parsing Utility",
   "productName": "CryptoTaxCalculator Utility",
   "author": "Brian Lewis <brlewis23@gmail.com>",
   "private": true,

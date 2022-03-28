@@ -141,8 +141,8 @@ module.exports = configure(function (ctx) {
 
       manifest: {
         name: `CryptoTaxCalculator Utility`,
-        short_name: `CryptoTaxCalculator Utility`,
-        description: `Utilities for CryptoTaxCalculator`,
+        short_name: `CTC Utility`,
+        description: `CryptoTaxCalculator Transaction Parsing Utility`,
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
