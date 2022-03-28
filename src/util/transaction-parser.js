@@ -1,14 +1,12 @@
-export const parseTransactions = text => {
-  return text
+export const parseTransactions = text =>
+  text
     .split('\n')
-    .filter(line => typeof line === 'string')
     .map(line => line.trim())
     .map((_, i, lines) =>
       isStartOfRow(lines, i) ? getRow(lines.slice(i)) : null,
     )
-    .filter(x => x)
+    .filter(line => line)
     .map(formatRow);
-};
 
 const isTimeString = str => str.endsWith(' AM') || str.endsWith(' PM');
 
