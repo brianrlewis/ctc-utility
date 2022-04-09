@@ -2,7 +2,12 @@
   <div :class="$style.wrapper">
     <div :class="$style.input">
       <h5 class="q-ma-none">Raw Input</h5>
-      <q-input v-model.trim="text" type="textarea" outlined />
+      <q-input
+        v-model.trim="text"
+        type="textarea"
+        outlined
+        @focus="input => input.target.select()"
+      />
     </div>
     <div :class="$style.output">
       <div class="flex justify-between q-pb-xs">
@@ -16,6 +21,14 @@
         </div>
       </div>
       <q-input v-model="transactionAmounts" type="textarea" outlined />
+      <div class="q-mt-sm">
+        <q-input
+          outlined
+          :model-value="total"
+          label="Total"
+          @focus="input => input.target.select()"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -41,6 +54,12 @@ export default defineComponent({
       transactions.value.map(({ amount }) => amount).join('\n'),
     );
 
+    const total = computed(() =>
+      transactions.value
+        .reduce((sum, { amount }) => sum + Number(amount), 0)
+        .toFixed(4),
+    );
+
     watch(text, val => {
       transactions.value = parseTransactions(val);
     });
@@ -53,7 +72,7 @@ export default defineComponent({
       text.value = getTestInput();
     }
 
-    return { text, transactions, transactionAmounts, reverse };
+    return { text, transactions, transactionAmounts, total, reverse };
   },
 });
 </script>
@@ -70,7 +89,7 @@ export default defineComponent({
 }
 .output {
   textarea {
-    height: calc(100vh - 350px);
+    height: calc(100vh - 450px);
   }
 }
 </style>
